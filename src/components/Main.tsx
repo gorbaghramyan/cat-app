@@ -13,7 +13,7 @@ function Main(): JSX.Element {
 
   return (
     <div className="catContainer">
-        {cats.map((cat) => <img key={cat.id} width={cat.width} height={cat.height} src={cat.url}></img>)}
+      {cats.map((cat) => <span><img key={cat.id} alt="" src={cat.url}></img></span>)}
     </div>
   );
 }
