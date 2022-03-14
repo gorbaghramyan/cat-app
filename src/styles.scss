@@ -27,6 +27,13 @@ body {
 	justify-items: center;
 	margin: 0 auto;
 
+	@media only screen and (max-width: 900px) {
+		grid-template-columns: 1fr 1fr;
+	}
+	@media only screen and (max-width: 655px) {
+		grid-template-columns: 1fr;
+	}
+
 	span {
 		margin: 15px;
 		width: 200px;
