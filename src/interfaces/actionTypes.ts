@@ -15,6 +15,10 @@ export interface fetchMoreCats {
 	type: actionTypes.MORE_CATS;
 	cats: Cat[];
 }
+export interface state {
+	categories: Category[];
+	cats: Cat[];
+}
 
 export type CatActionPayloads = fetchCats | fetchMoreCats;
 

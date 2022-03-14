@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useActions } from "../hooks/useActions";
-import { fetchCategories } from "../interfaces/actionTypes";
+import { state } from "../interfaces/actionTypes";
 
 function Sidebar(): JSX.Element {
   const { getCategories, getCats } = useActions();
-  const categories = useSelector((state: fetchCategories) => state.categories);
+  const categories = useSelector((state: state) => state.categories);
 
   useEffect(() => {
     getCategories();
