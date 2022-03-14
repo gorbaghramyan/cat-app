@@ -22,7 +22,7 @@ function Main(): JSX.Element {
   return (
     <div className="catContainer">
       {cats.map((cat, i) => <span key={i}><img alt="" src={cat.url}></img></span>)}
-      <button onClick={() => loadMore()}>More</button>
+      <button onClick={loadMore}>More</button>
     </div>
   );
 }

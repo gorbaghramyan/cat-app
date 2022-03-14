@@ -1,7 +1,9 @@
-import * as CategoryActions from "./categoryActionCreator";
+import * as CategoryActions from './categoryActionCreator';
+import * as CatActions from './catActionCreator';
 
 const ActionCreators = {
-    ...CategoryActions,
-}
+	...CategoryActions,
+	...CatActions,
+};
 
-export default {...ActionCreators};
+export default ActionCreators;
