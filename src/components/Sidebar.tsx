@@ -9,13 +9,13 @@ function Sidebar(): JSX.Element {
 
   useEffect(() => {
     getCategories();
-  }, []);
+  }, [getCategories]);
 
   const onCategorySelect = (id: number) => getCats(id);
-  
+
   return (
     <div className="sidebar">
-        {categories?.map(category => <span key={category.id} onClick={() => onCategorySelect(category.id)}>{category.name}</span>)}
+      {categories?.map(category => <span key={category.id} onClick={() => onCategorySelect(category.id)}>{category.name}</span>)}
     </div>
   );
 }
