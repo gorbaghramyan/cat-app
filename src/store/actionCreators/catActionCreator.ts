@@ -7,60 +7,36 @@ import store from '../Store';
 export const getCats = (category_id: number) => {
 	return async (dispatch: Dispatch<fetchCats>) => {
 		try {
-			const res = await fetch(
-				`https://api.thecatapi.com/v1/images/search?limit=9&page=0&category_ids=${category_id}`
-			);
-			let cats: Cat[] = await res.json();
-
-			cats = cats.map(
-				(cat) =>
-					new Cat(
-						cat.id,
-						cat.url,
-						cat.categories,
-						cat.breeds,
-						cat.width,
-						cat.height
-					)
-			);
-
 			dispatch({
 				type: actionTypes.FETCH_CATS,
-				cats,
+				cats: await _fetchCats(category_id),
 			});
-		} catch (e) {
-			console.error('error');
-		}
+		} catch (e) {}
 	};
 };
 
 export const getMoreCats = (category_id: number) => {
 	return async (dispatch: Dispatch<fetchMoreCats>) => {
 		try {
-			const res = await fetch(
-				`https://api.thecatapi.com/v1/images/search?limit=9&page=0&category_ids=${category_id}`
-			);
-			let cats: Cat[] = await res.json();
-
-			cats = cats.map(
-				(cat) =>
-					new Cat(
-						cat.id,
-						cat.url,
-						cat.categories,
-						cat.breeds,
-						cat.width,
-						cat.height
-					)
-			);
-			const state = store.getState() as any;
+			const state = store.getState() as { cats: Cat[] };
+			const cats = await _fetchCats(category_id);
 
 			dispatch({
 				type: actionTypes.MORE_CATS,
-				cats: [...state?.cats, ...cats],
+				cats: [...state.cats, ...cats],
 			});
-		} catch (e) {
-			console.error('error');
-		}
+		} catch (e) {}
 	};
+};
+
+const _fetchCats = async (category_id: number): Promise<Cat[]> => {
+	try {
+		const res = await fetch(
+			`https://api.thecatapi.com/v1/images/search?limit=9&page=0&category_ids=${category_id}`
+		);
+
+		return await res.json();
+	} catch (error) {}
+
+	return [];
 };

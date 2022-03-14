@@ -1,13 +1,7 @@
 import { Dispatch } from 'react';
 import { actionTypes } from '../../enums/actionEnums';
-import {
-	fetchCategories,
-	fetchCats,
-	fetchMoreCats,
-} from '../../interfaces/actionTypes';
-import Cat from '../../models/cat';
+import { fetchCategories } from '../../interfaces/actionTypes';
 import Category from '../../models/category';
-import store from '../Store';
 
 export const getCategories = () => {
 	return async (dispatch: Dispatch<fetchCategories>) => {
@@ -17,12 +11,11 @@ export const getCategories = () => {
 			categories = categories.map(
 				(category) => new Category(category.id, category.name)
 			);
+
 			dispatch({
 				type: actionTypes.FETCH_CATEGORIES,
 				categories,
 			});
-		} catch (e) {
-			console.error('error');
-		}
+		} catch (e) {}
 	};
 };

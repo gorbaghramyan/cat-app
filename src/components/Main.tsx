@@ -17,8 +17,6 @@ function Main(): JSX.Element {
     return <div className="no-category">Choose a category</div>;
   }
 
-  cats.sort((a: Cat, b: Cat) => a.height - b.height);
-
   return (
     <div className="catContainer">
       {cats.map((cat, i) => <span key={i}><img alt="" src={cat.url}></img></span>)}

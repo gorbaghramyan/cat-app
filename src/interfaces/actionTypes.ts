@@ -16,4 +16,6 @@ export interface fetchMoreCats {
 	cats: Cat[];
 }
 
-export type actionPayloads = fetchCats | fetchCategories | fetchMoreCats;
+export type CatActionPayloads = fetchCats | fetchMoreCats;
+
+export type CategoryActionPayloads = fetchCategories;
